@@ -7,6 +7,8 @@ MANDIR?=	${PREFIX}/share/man/man1
 
 CFLAGS+=	-DHAVE_ERR_H -DHAVE_NANOSLEEP
 
+all: setsid setsid.1
+
 setsid: c.h setsid.o
 
 setsid.1: setsid.1.adoc
