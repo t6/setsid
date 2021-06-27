@@ -14,6 +14,7 @@
  */
 
 #include <getopt.h>
+#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,8 +23,8 @@
 #include <sys/wait.h>
 
 #include "c.h"
-#include "nls.h"
-#include "closestream.h"
+
+#define _(x) (x)
 
 static void __attribute__((__noreturn__)) usage(void)
 {
@@ -64,9 +65,6 @@ int main(int argc, char **argv)
 	};
 
 	setlocale(LC_ALL, "");
-	bindtextdomain(PACKAGE, LOCALEDIR);
-	textdomain(PACKAGE);
-	close_stdout_atexit();
 
 	while ((ch = getopt_long(argc, argv, "+Vhcfw", longopts, NULL)) != -1)
 		switch (ch) {
@@ -85,12 +83,11 @@ int main(int argc, char **argv)
 		case 'V':
 			print_version(EXIT_SUCCESS);
 		default:
-			errtryhelp(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 
 	if (argc - optind < 1) {
-		warnx(_("no command specified"));
-		errtryhelp(EXIT_FAILURE);
+		errx(EXIT_FAILURE, _("no command specified"));
 	}
 
 	if (forcefork || getpgrp() == getpid()) {

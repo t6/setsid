@@ -4,7 +4,7 @@
 = setsid(1)
 :doctype: manpage
 :man manual: User Commands
-:man source: util-linux {release-version}
+:man source: util-linux 2.37
 :page-layout: base
 :command: setsid
 
@@ -45,10 +45,3 @@ mailto:jrs@world.std.com[Rick Sladkey]
 
 *setsid*(2)
 
-include::man-common/bugreports.adoc[]
-
-include::man-common/footer.adoc[]
-
-ifdef::translation[]
-include::man-common/translation.adoc[]
-endif::[]
