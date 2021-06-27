@@ -15,4 +15,5 @@ setsid.1: setsid.1.adoc
 install: setsid setsid.1
 	@mkdir -p ${DESTDIR}${BINDIR} ${DESTDIR}${MANDIR}
 	${BSD_INSTALL_PROGRAM} setsid ${DESTDIR}${BINDIR}
+	ln ${DESTDIR}${BINDIR}/setsid ${DESTDIR}${BINDIR}/ssid
 	${BSD_INSTALL_MAN} setsid.1 ${DESTDIR}${MANDIR}
