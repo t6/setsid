@@ -385,9 +385,10 @@ static inline int xusleep(useconds_t usec)
 
 #define USAGE_MAN_TAIL(_man)   _("\nFor more details see %s.\n"), _man
 
-#define UTIL_LINUX_VERSION _("%s from %s\n"), program_invocation_short_name, PACKAGE_STRING
+#define UTIL_LINUX_VERSION _("%s from util-linux 2.37\n"), program_invocation_short_name
 
 #define print_version(eval) __extension__ ({ \
+		printf(UTIL_LINUX_VERSION); \
 		exit(eval); \
 })
 
